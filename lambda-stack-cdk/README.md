@@ -14,7 +14,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `npx cdk synth`   emits the synthesized CloudFormation template
 
 
-# CDK commands
+## CDK commands
 - cdk init app --language typescript
 - cdk bootstrap
 - `cdk synth` generates CloudFormation template for each stacks in the bin file.
@@ -24,7 +24,9 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 - `cdk doctor`  
 - `cdk destroy`
 
+## AWS commands
+- `aws lambda list-functions --region us-east-1 --output text --query "Functions[?Runtime=='nodejs18.x'].FunctionArn"`
 
-# Terms
+## Terms
 - L3 CDK construct wraps one or more L2 or L1 constructs
 
