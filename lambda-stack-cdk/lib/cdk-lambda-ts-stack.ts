@@ -17,6 +17,5 @@ export class CdkLambdaTsStack extends cdk.Stack {
       handler: fn,
       restApiName: `HelloApi`,
     });
-
   }
 }

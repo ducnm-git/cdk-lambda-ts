@@ -13,3 +13,18 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `npx cdk diff`    compare deployed stack with current state
 * `npx cdk synth`   emits the synthesized CloudFormation template
 
+
+# CDK commands
+- cdk init app --language typescript
+- cdk bootstrap
+- `cdk synth` generates CloudFormation template for each stacks in the bin file.
+- cdk deploy
+- `cdk list`  list stacks (local)
+- `cdk diff`  check diff with AWS stacks
+- `cdk doctor`  
+- `cdk destroy`
+
+
+# Terms
+- L3 CDK construct wraps one or more L2 or L1 constructs
+
