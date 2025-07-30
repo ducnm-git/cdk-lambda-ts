@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import * as cdk from 'aws-cdk-lib';
-import { S3StackCdkStack } from '../lib/s3-stack-cdk-stack';
+import { CdkStackS3 } from '../lib/s3-stack-cdk-stack';
 
 const app = new cdk.App();
-new S3StackCdkStack(app, 'S3StackCdkStack', {});
+new CdkStackS3(app, 'CdkStackS3', {});
