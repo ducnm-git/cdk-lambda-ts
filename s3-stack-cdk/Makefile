@@ -1,5 +1,9 @@
 synth:
-	npx cdk synth
+	if [ -z "${STACK}" ]; then \
+		npx cdk synth; \
+	else \
+		npx cdk synth ${STACK}; \
+	fi
 diff:
 	npx cdk diff
 build-failed-with-parameters:
