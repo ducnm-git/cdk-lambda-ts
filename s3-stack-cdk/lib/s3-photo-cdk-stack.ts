@@ -7,6 +7,7 @@ import { Construct } from 'constructs';
 
 export class S3PhotoCdkStack extends cdk.Stack {
   private stackSuffix: string;
+  public readonly s3PhotoBucketArn: string;
 
   private initializeSuffix() {
     const shortStackId = Fn.select(2, Fn.split('/', this.stackId))
@@ -22,10 +23,6 @@ export class S3PhotoCdkStack extends cdk.Stack {
       removalPolicy: RemovalPolicy.DESTROY,
       autoDeleteObjects: true
     });
-
-      new cdk.CfnOutput(this, 'photo-bucket-id', {
-        value: myS3PhotoBucket.bucketArn,
-        exportName: 'photo-bucket'
-      })
+    this.s3PhotoBucketArn = myS3PhotoBucket.bucketArn
   }
 }
