@@ -13,10 +13,20 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `npx cdk diff`    compare deployed stack with current state
 * `npx cdk synth`   emits the synthesized CloudFormation template
 
-## node virtual environment
 
-* `npm install -g node-env`
-* `npx node-venv set 22.17.0`
-* `npx node-venv activate`
-* `npm install -g aws-cdk`
-* `cdk init --language typescript`
+## CDK commands
+- cdk init app --language typescript
+- cdk bootstrap
+- `cdk synth` generates CloudFormation template for each stacks in the bin file.
+- cdk deploy
+- `cdk list`  list stacks (local)
+- `cdk diff`  check diff with AWS stacks
+- `cdk doctor`  
+- `cdk destroy`
+
+## AWS commands
+- `aws lambda list-functions --region us-east-1 --output text --query "Functions[?Runtime=='nodejs18.x'].FunctionArn"`
+
+## Terms
+- L3 CDK construct wraps one or more L2 or L1 constructs
+
