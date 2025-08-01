@@ -1,5 +1,5 @@
 import * as cdk from 'aws-cdk-lib';
-import { Duration } from 'aws-cdk-lib';
+import { Duration, RemovalPolicy } from 'aws-cdk-lib';
 import { LifecyclePolicy } from 'aws-cdk-lib/aws-efs';
 import { Bucket, CfnBucket } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
@@ -8,10 +8,12 @@ class L3Bucket extends Construct {
   constructor(scope: Construct, id: string, expiration: number){
     super(scope, id);
     
-    new Bucket(this, 'my-l3-bucket', {
+    new Bucket(this, 'l3-bucket', {
       lifecycleRules: [{
         expiration: Duration.days(expiration)
-      }]
+      }],
+      removalPolicy: RemovalPolicy.DESTROY,
+      autoDeleteObjects: true
     })
   }
 };
@@ -52,7 +54,9 @@ export class CdkStackS3 extends cdk.Stack {
     const myL2Bucket = new Bucket(this, 'my-l2-bucket', {
       lifecycleRules: [{
         expiration: Duration.days(duration.valueAsNumber)
-      }]
+      }],
+      removalPolicy: RemovalPolicy.DESTROY,
+      autoDeleteObjects: true
     });
 
 
@@ -65,7 +69,7 @@ export class CdkStackS3 extends cdk.Stack {
 
 
     // Construction Layer 3
-    new L3Bucket(this, 'my-l3-bucket', 3);
+    const myL3Bucket = new L3Bucket(this, 'mybucket', 3);
   }
 }
 
