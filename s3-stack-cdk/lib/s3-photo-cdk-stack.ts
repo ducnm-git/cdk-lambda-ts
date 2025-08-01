@@ -22,5 +22,10 @@ export class S3PhotoCdkStack extends cdk.Stack {
       removalPolicy: RemovalPolicy.DESTROY,
       autoDeleteObjects: true
     });
+
+      new cdk.CfnOutput(this, 'photo-bucket-id', {
+        value: myS3PhotoBucket.bucketArn,
+        exportName: 'photo-bucket'
+      })
   }
 }
