@@ -1,18 +1,27 @@
 import { Stack, StackProps } from "aws-cdk-lib";
 import { LambdaIntegration } from "aws-cdk-lib/aws-apigateway";
+import { ITable } from "aws-cdk-lib/aws-dynamodb";
 import { Code, Function, Handler, Runtime } from "aws-cdk-lib/aws-lambda";
 import { Construct } from "constructs";
 import { join } from "path";
 
+interface lambdaStackProps extends StackProps {
+  spfinderTable: ITable
+}
+
+
 export class lambdaStack extends Stack {
   public readonly myLambdaFunctionIntegration: LambdaIntegration;
-  constructor(scope: Construct, id: string, props?: StackProps){
+  constructor(scope: Construct, id: string, props: lambdaStackProps){
     super(scope, id, props )
 
     const myLambdaFunction = new Function(this, 'helloLambda',{
       runtime: Runtime.NODEJS_LATEST,
       handler: 'hello.main',
-      code: Code.fromAsset(join(__dirname, '..','..','services'))
+      code: Code.fromAsset(join(__dirname, '..','..','services')),
+      environment: {
+        TABLE_NAME: props.spfinderTable.tableName
+      }
     })
 
     this.myLambdaFunctionIntegration = new LambdaIntegration(myLambdaFunction);
