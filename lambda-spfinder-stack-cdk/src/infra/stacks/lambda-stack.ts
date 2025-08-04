@@ -1,6 +1,7 @@
 import { Stack, StackProps } from "aws-cdk-lib";
 import { LambdaIntegration } from "aws-cdk-lib/aws-apigateway";
 import { ITable } from "aws-cdk-lib/aws-dynamodb";
+import { Effect, PolicyStatement } from "aws-cdk-lib/aws-iam";
 import { Runtime } from "aws-cdk-lib/aws-lambda";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
 import { Construct } from "constructs";
@@ -23,7 +24,17 @@ export class lambdaStack extends Stack {
       environment: {
         TABLE_NAME: props.spfinderTable.tableName
       }
-    })
+    });
+
+    myLambdaFunction.addToRolePolicy(new PolicyStatement({
+        effect: Effect.ALLOW,
+        actions: [
+          's3:ListAllMyBuckets',
+          's3:ListBucket'
+        ],
+        resources: ["*"] // example only
+
+    }))
 
     this.myLambdaFunctionIntegration = new LambdaIntegration(myLambdaFunction);
   }
