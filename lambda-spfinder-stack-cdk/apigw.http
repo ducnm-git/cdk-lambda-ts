@@ -1,5 +1,11 @@
 ### REST Client
 
-GET https://w1d6fanj9a.execute-api.us-east-1.amazonaws.com/prod/spfinder
+GET https://uxgyjfvr88.execute-api.us-east-1.amazonaws.com/prod/spfinder
+
+###
+POST https://uxgyjfvr88.execute-api.us-east-1.amazonaws.com/prod/spfinder
+
+###
+DELETE https://uxgyjfvr88.execute-api.us-east-1.amazonaws.com/prod/spfinder
 
 ###

@@ -3,7 +3,7 @@ import { LambdaIntegration, RestApi } from "aws-cdk-lib/aws-apigateway";
 import { Construct } from "constructs";
 
 interface apiStackProps extends StackProps {
-  myLambdaIntegration : LambdaIntegration
+  spfinderIntegration : LambdaIntegration
 }
 
 export class apiStack extends Stack {
@@ -12,6 +12,8 @@ export class apiStack extends Stack {
 
     const api = new RestApi(this, 'apigw');
     const apigwResource = api.root.addResource('spfinder'); 
-    apigwResource.addMethod('GET', props.myLambdaIntegration);
+    apigwResource.addMethod('GET', props.spfinderIntegration);
+    apigwResource.addMethod('POST', props.spfinderIntegration);
+    apigwResource.addMethod('ANY', props.spfinderIntegration);
   }
 }
