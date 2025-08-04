@@ -1,4 +1,4 @@
-import { Stack, StackProps } from "aws-cdk-lib";
+import { RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
 import { AttributeType, ITable, Table } from "aws-cdk-lib/aws-dynamodb";
 import { Construct } from "constructs";
 import { getSuffixFromStack } from "../utils";
@@ -12,6 +12,8 @@ export class dataStack extends Stack {
     const suffix = getSuffixFromStack(this);
 
     this.spfinderTable = new Table(this, 'spfinderTable', {
+      removalPolicy: RemovalPolicy.DESTROY,
+      deletionProtection: false, // dev only
       partitionKey: {
         name: 'id',
         type: AttributeType.STRING
