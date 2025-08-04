@@ -35,3 +35,34 @@ JS SDK v3: Breaked by services
 npm i @aws-sdk/client-s3
 ```
 
+
+## Enable node debug in VSCode
+Required ts-node
+`Ctrl + Shift + D` -> Create a lauch.json file -> select `Node.js`  -> `.vscode/launch.json`
+
+```JSON
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug local file",
+      "cwd": "${workspaceFolder}/lambda-spfinder-stack-cdk",
+      "program": "${workspaceFolder}/lambda-spfinder-stack-cdk/test/laucher.ts",
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register"
+      ],
+      "args": ["${relativeFile}"],
+      "env": {
+        "AWS_REGION" : "us-east-1"
+      }
+    }
+  ]
+}
+```
