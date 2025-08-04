@@ -14,6 +14,8 @@ npm i -D aws-cdk aws-cdk-lib constructs \
 ## Lambda using Typescript
 ```
 npm i -D @type/aws-lambda
+npm i uuid @types/uuid
+npm i -D esbuild
 ```
 
 
