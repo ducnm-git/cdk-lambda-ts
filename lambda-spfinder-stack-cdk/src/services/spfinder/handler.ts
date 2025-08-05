@@ -12,11 +12,12 @@ async function handler(event: APIGatewayProxyEvent, context: Context): Promise<A
     switch (event.httpMethod) {
       case 'GET':
         msg = 'Process GET method';
-        const getResponse = getHandler(event, ddbClient);
+        const getResponse = await getHandler(event, ddbClient);
+        console.log(getResponse);
         return getResponse;
       case 'POST':
         msg = 'Process POST method';
-        const postResponse = postHandler(event, ddbClient);
+        const postResponse = await postHandler(event, ddbClient);
         return postResponse;
       default:
         msg = 'Process ' + event.httpMethod + ' method';
