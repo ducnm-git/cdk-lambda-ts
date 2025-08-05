@@ -1,4 +1,4 @@
-import { Stack, StackProps } from "aws-cdk-lib";
+import { RemovalPolicies, RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
 import { LambdaIntegration } from "aws-cdk-lib/aws-apigateway";
 import { ITable } from "aws-cdk-lib/aws-dynamodb";
 import { Effect, PolicyStatement } from "aws-cdk-lib/aws-iam";
@@ -25,6 +25,16 @@ export class lambdaStack extends Stack {
         TABLE_NAME: props.spfinderTable.tableName
       }
     });
+
+    spfinderLambda.addToRolePolicy(new PolicyStatement({
+      effect: Effect.ALLOW,
+      resources: [props.spfinderTable.tableArn],
+      actions: [
+        'dynamodb:PutItem'
+      ]
+    }));
+
+    spfinderLambda.applyRemovalPolicy(RemovalPolicy.DESTROY);
 
     this.spfinderLambdaIntegration = new LambdaIntegration(spfinderLambda);
   }
