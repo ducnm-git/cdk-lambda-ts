@@ -3,7 +3,7 @@
 
 ## initiation
 
-```
+```BASH
 npx node-venv set 22.17.0
 npx node-venv activate
 npm init -y
@@ -12,7 +12,7 @@ npm i -D aws-cdk aws-cdk-lib constructs \
 ```
 
 ## Lambda using Typescript
-```
+```BASH
 npm i -D @type/aws-lambda
 npm i uuid @types/uuid
 npm i -D esbuild
@@ -66,3 +66,24 @@ Required ts-node
   ]
 }
 ```
+## Direct run debug via command
+Put environment in `lambda-spfinder-stack-cdk/test/laucher.ts`
+```TS
+process.env.AWS_REGION = "us-east-1"
+process.env.TABLE_NAME = "spfinderTable-12082fe002b1"
+```
+and run:
+```BASH
+$ cd ./cdk-lambda-ts/lambda-spfinder-stack-cdk
+$ npm exec ts-node test/laucher.ts
+POST id = ebe3709f-bf84-4f3a-876a-872466a23acf; cmd result: {"$metadata":{"httpStatusCode":200,"requestId":"SDLDP5G0MO1LD5R3AQV42JHNRFVV4KQNSO5AEMVJF66Q9ASUAAJG","attempts":1,"totalRetryDelay":0}}`
+```
+
+## Method Handler
+`npm i @aws-sdk/client-dynamodb`
+
+
+## Debug via Cloudwatch log group
+Cloudwatch log group field map:
+- Client header `x-amz-apigw-id: O0bjtEOSIAMEuVw=` is `requestContext.[].extendedRequestId`
+- Client header `x-amzn-RequestId: acd2344f-13b4-4ec6-96aa-1278bd3b1db1` is `requestContext.[].requestId`

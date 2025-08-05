@@ -17,7 +17,8 @@
       ],
       "args": ["${relativeFile}"],
       "env": {
-        "AWS_REGION" : "us-east-1"
+        "AWS_REGION" : "us-east-1",
+        "TABLE_NAME" : "spfinderTable-12082fe002b1"
       }
     }
   ]
