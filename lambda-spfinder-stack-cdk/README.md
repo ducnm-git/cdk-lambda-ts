@@ -81,9 +81,14 @@ POST id = ebe3709f-bf84-4f3a-876a-872466a23acf; cmd result: {"$metadata":{"httpS
 
 ## Method Handler
 `npm i @aws-sdk/client-dynamodb`
+`npm i @aws-sdk/util-dynamodb` mashall and unmashall
 
 
 ## Debug via Cloudwatch log group
 Cloudwatch log group field map:
 - Client header `x-amz-apigw-id: O0bjtEOSIAMEuVw=` is `requestContext.[].extendedRequestId`
 - Client header `x-amzn-RequestId: acd2344f-13b4-4ec6-96aa-1278bd3b1db1` is `requestContext.[].requestId`
+
+
+## Note
+- Linux: `Ctrl + Shift + I` for reformat file in VSCode
