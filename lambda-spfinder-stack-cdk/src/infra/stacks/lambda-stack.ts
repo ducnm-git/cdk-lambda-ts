@@ -1,4 +1,4 @@
-import { RemovalPolicies, RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
+import { RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
 import { LambdaIntegration } from "aws-cdk-lib/aws-apigateway";
 import { ITable } from "aws-cdk-lib/aws-dynamodb";
 import { Effect, PolicyStatement } from "aws-cdk-lib/aws-iam";
@@ -34,6 +34,7 @@ export class lambdaStack extends Stack {
         'dynamodb:UpdateItem',
         'dynamodb:GetItem',
         'dynamodb:Scan',
+        'dynamodb:DeleteItem'
       ]
     }));
 

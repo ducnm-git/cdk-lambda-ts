@@ -25,12 +25,19 @@ process.env.TABLE_NAME = "spfinderTable-12082fe002b1"
 // } as any, {} as any)
 
 
+// handler({
+//   httpMethod: 'PUT',
+//   queryStringParameters: {
+//     id: '2e6bb13b-be8c-43c5-ba53-c91a57ba2c54'
+//   },
+//   body: JSON.stringify({
+//     location: 'Eastern Laos'
+//   })
+// } as any, {} as any)
+
 handler({
-  httpMethod: 'PUT',
+  httpMethod: 'DELETE',
   queryStringParameters: {
-    id: '2e6bb13b-be8c-43c5-ba53-c91a57ba2c54'
-  },
-  body: JSON.stringify({
-    location: 'Eastern Laos'
-  })
+    id: '9c3e5093-f6a6-44dd-938e-af3a5d76b3c7'
+  }
 } as any, {} as any)

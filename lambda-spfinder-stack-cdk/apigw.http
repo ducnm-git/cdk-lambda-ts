@@ -4,7 +4,7 @@ GET https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder
 
 ### Get by id
 
-GET https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder?id=2e6bb13b-be8c-43c5-ba53-c91a57ba2c54
+GET https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder?id=5fc6ce74-5119-4dbe-9d0a-4573c576c545
 
 ###
 POST https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder
@@ -13,8 +13,6 @@ Content-Type: application/json
 {
   "location": "Vietnam"
 }
-###
-DELETE https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder
 
 ###
 PUT https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder?id=b9346dc7-abb1-40c4-83c8-c074297b2ab5
@@ -23,3 +21,6 @@ Content-Type: application/json
 {
   "location": "Eastern Laos"
 }
+
+###
+DELETE https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder?id=5fc6ce74-5119-4dbe-9d0a-4573c576c545

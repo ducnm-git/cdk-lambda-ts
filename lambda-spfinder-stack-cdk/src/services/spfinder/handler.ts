@@ -4,6 +4,7 @@ import { postHandler } from "./postHandler";
 import { getHandler } from "./getHandler";
 import { postHandlerWithDoc } from "./postHandlerWithDoc";
 import { putHandler } from "./putHandler";
+import { deleteHandler } from "./deleteHandler";
 
 const ddbClient = new DynamoDBClient({})
 
@@ -26,6 +27,11 @@ async function handler(event: APIGatewayProxyEvent, context: Context): Promise<A
         const putResponse = await putHandler(event, ddbClient);
         console.log(putResponse);
         return putResponse;
+      case 'DELETE':
+        msg = 'Process PUT method';
+        const deleteResponse = await deleteHandler(event, ddbClient);
+        console.log(deleteResponse);
+        return deleteResponse;
       default:
         msg = 'Process ' + event.httpMethod + ' method';
         break;
