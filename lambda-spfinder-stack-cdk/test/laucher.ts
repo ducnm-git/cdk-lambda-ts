@@ -31,6 +31,6 @@ handler({
     id: '2e6bb13b-be8c-43c5-ba53-c91a57ba2c54'
   },
   body: JSON.stringify({
-    location: 'Estern Laos'
+    location: 'Eastern Laos'
   })
 } as any, {} as any)

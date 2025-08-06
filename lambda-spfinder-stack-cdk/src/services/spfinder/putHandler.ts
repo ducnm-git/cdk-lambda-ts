@@ -31,7 +31,7 @@ export async function putHandler(event: APIGatewayProxyEvent, ddbClient: DynamoD
     }));
     return {
       statusCode: 204,
-      body: JSON.stringify(updateResult.Attributes)
+      body: JSON.stringify('[DEBUG] Updated: ' + JSON.stringify(updateResult.Attributes))
     }
   }
   return {

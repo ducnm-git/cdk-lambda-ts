@@ -17,7 +17,7 @@ Content-Type: application/json
 DELETE https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder
 
 ###
-PUT https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder
+PUT https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder?id=b9346dc7-abb1-40c4-83c8-c074297b2ab5
 Content-Type: application/json
 
 {
