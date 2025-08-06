@@ -17,4 +17,9 @@ Content-Type: application/json
 DELETE https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder
 
 ###
+PUT https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder
+Content-Type: application/json
 
+{
+  "location": "Eastern Laos"
+}

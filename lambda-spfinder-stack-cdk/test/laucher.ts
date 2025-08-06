@@ -4,12 +4,12 @@ import { handler } from "../src/services/spfinder/handler";
 process.env.AWS_REGION = "us-east-1"
 process.env.TABLE_NAME = "spfinderTable-12082fe002b1"
 
-handler({
-  httpMethod: 'POST',
-  body: JSON.stringify({
-    location: "Vietnam"
-  })
-} as any, {} as any)
+// handler({
+//   httpMethod: 'POST',
+//   body: JSON.stringify({
+//     location: "Vietnam"
+//   })
+// } as any, {} as any)
 
 
 // handler({
@@ -24,3 +24,13 @@ handler({
 //   }
 // } as any, {} as any)
 
+
+handler({
+  httpMethod: 'PUT',
+  queryStringParameters: {
+    id: '2e6bb13b-be8c-43c5-ba53-c91a57ba2c54'
+  },
+  body: JSON.stringify({
+    location: 'Estern Laos'
+  })
+} as any, {} as any)
