@@ -7,7 +7,7 @@ import { apiStack } from "./stacks/apigw-stack";
 
 const app = new App();
 const myDataStack = new dataStack(app, 'dataStack');
-const myLambdaStack = new lambdaStack(app, 'myHelloLambdaStack', {
+const myLambdaStack = new lambdaStack(app, 'spfinderLambdaStack', {
   spfinderTable: myDataStack.spfinderTable
 });
-new apiStack(app, 'apigwStack', { myLambdaIntegration: myLambdaStack.myLambdaFunctionIntegration});
+new apiStack(app, 'apigwStack', { spfinderIntegration: myLambdaStack.spfinderLambdaIntegration});

@@ -1,4 +1,4 @@
-import { Stack, StackProps } from "aws-cdk-lib";
+import { RemovalPolicy, Stack, StackProps } from "aws-cdk-lib";
 import { LambdaIntegration } from "aws-cdk-lib/aws-apigateway";
 import { ITable } from "aws-cdk-lib/aws-dynamodb";
 import { Effect, PolicyStatement } from "aws-cdk-lib/aws-iam";
@@ -13,29 +13,33 @@ interface lambdaStackProps extends StackProps {
 
 
 export class lambdaStack extends Stack {
-  public readonly myLambdaFunctionIntegration: LambdaIntegration;
+  public readonly spfinderLambdaIntegration: LambdaIntegration;
   constructor(scope: Construct, id: string, props: lambdaStackProps) {
     super(scope, id, props)
 
-    const myLambdaFunction = new NodejsFunction(this, 'helloLambda', {
+    const spfinderLambda = new NodejsFunction(this, 'spfinderLambda', {
       runtime: Runtime.NODEJS_LATEST,
       handler: 'handler',
-      entry: join(__dirname, '..', '..', 'services', 'hello.ts'),
+      entry: join(__dirname, '..', '..', 'services', 'spfinder', 'handler.ts'),
       environment: {
         TABLE_NAME: props.spfinderTable.tableName
       }
     });
 
-    myLambdaFunction.addToRolePolicy(new PolicyStatement({
-        effect: Effect.ALLOW,
-        actions: [
-          's3:ListAllMyBuckets',
-          's3:ListBucket'
-        ],
-        resources: ["*"] // example only
+    spfinderLambda.addToRolePolicy(new PolicyStatement({
+      effect: Effect.ALLOW,
+      resources: [props.spfinderTable.tableArn],
+      actions: [
+        'dynamodb:PutItem',
+        'dynamodb:UpdateItem',
+        'dynamodb:GetItem',
+        'dynamodb:Scan',
+        'dynamodb:DeleteItem'
+      ]
+    }));
 
-    }))
+    spfinderLambda.applyRemovalPolicy(RemovalPolicy.DESTROY);
 
-    this.myLambdaFunctionIntegration = new LambdaIntegration(myLambdaFunction);
+    this.spfinderLambdaIntegration = new LambdaIntegration(spfinderLambda);
   }
 }
