@@ -1,7 +1,7 @@
-import { DynamoDBClient, PutItemCommand } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { DynamoDBDocumentClient, PutCommand } from "@aws-sdk/lib-dynamodb";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
-import { v4 } from "uuid";
+import { createRandomId } from "../shared/utils";
 
 
 
@@ -9,7 +9,7 @@ import { v4 } from "uuid";
 export async function postHandlerWithDoc(event:APIGatewayProxyEvent, ddbClient: DynamoDBClient): Promise<APIGatewayProxyResult> {
   
   const ddbDocClient = DynamoDBDocumentClient.from(ddbClient);
-  const randomId = v4();
+  const randomId = createRandomId();
   const item = JSON.parse(event.body);
   item.id = randomId;
 

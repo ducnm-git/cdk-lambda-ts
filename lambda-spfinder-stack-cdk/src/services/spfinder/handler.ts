@@ -5,7 +5,7 @@ import { getHandler } from "./getHandler";
 import { postHandlerWithDoc } from "./postHandlerWithDoc";
 import { putHandler } from "./putHandler";
 import { deleteHandler } from "./deleteHandler";
-import { missingFieldError } from "../shared/validator";
+import { JsonError, missingFieldError } from "../shared/validator";
 
 const ddbClient = new DynamoDBClient({})
 
@@ -38,13 +38,12 @@ async function handler(event: APIGatewayProxyEvent, context: Context): Promise<A
         break;
     }
   } catch (error) {
-    if (error instanceof missingFieldError) {
+    if (error instanceof missingFieldError || error instanceof JsonError) {
       return {
         statusCode: 400,
         body: JSON.stringify(error.message)
       }
     }
-    
 
     console.error(error);
     return {

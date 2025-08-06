@@ -1,5 +1,7 @@
 import { spfEntry } from "../model/model"
 
+export class JsonError extends Error {}
+
 export class missingFieldError extends Error {
   constructor(missingField: string) {
     super(`Value for ${missingField} expected!`)
