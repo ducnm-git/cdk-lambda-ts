@@ -30,7 +30,9 @@ export class lambdaStack extends Stack {
       effect: Effect.ALLOW,
       resources: [props.spfinderTable.tableArn],
       actions: [
-        'dynamodb:PutItem'
+        'dynamodb:PutItem',
+        'dynamodb:GetItem',
+        'dynamodb:Scan',
       ]
     }));
 

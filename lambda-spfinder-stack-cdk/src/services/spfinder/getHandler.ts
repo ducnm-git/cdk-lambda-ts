@@ -37,6 +37,7 @@ export async function getHandler(event: APIGatewayProxyEvent, ddbClient: DynamoD
     }
   }
 
+  // required: iam role with dynamodb:Scan
   const result = await ddbClient.send(new ScanCommand({
     TableName: process.env.TABLE_NAME
   }));
