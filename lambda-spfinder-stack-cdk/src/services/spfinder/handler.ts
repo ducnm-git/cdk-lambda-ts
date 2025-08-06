@@ -2,6 +2,7 @@ import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from "aws-lambda";
 import { postHandler } from "./postHandler";
 import { getHandler } from "./getHandler";
+import { postHandlerWithDoc } from "./postHandlerWithDoc";
 
 const ddbClient = new DynamoDBClient({})
 
@@ -17,7 +18,7 @@ async function handler(event: APIGatewayProxyEvent, context: Context): Promise<A
         return getResponse;
       case 'POST':
         msg = 'Process POST method';
-        const postResponse = await postHandler(event, ddbClient);
+        const postResponse = await postHandlerWithDoc(event, ddbClient);
         return postResponse;
       default:
         msg = 'Process ' + event.httpMethod + ' method';

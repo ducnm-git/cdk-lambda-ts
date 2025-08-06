@@ -81,8 +81,10 @@ POST id = ebe3709f-bf84-4f3a-876a-872466a23acf; cmd result: {"$metadata":{"httpS
 
 ## Method Handler
 `npm i @aws-sdk/client-dynamodb`
-`npm i @aws-sdk/util-dynamodb` mashall and unmashall
 
+Fix for: 'TypeError: Cannot read properties of undefined (reading '0')'
+`npm i @aws-sdk/util-dynamodb` mashall and unmashall
+`npm i @aws-sdk/lib-dynamodb` DynamoDBDocumentClient
 
 ## Debug via Cloudwatch log group
 Cloudwatch log group field map:
