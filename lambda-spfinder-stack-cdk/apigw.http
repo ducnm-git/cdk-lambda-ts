@@ -4,14 +4,15 @@ GET https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder
 
 ### Get by id
 
-GET https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder?id=5fc6ce74-5119-4dbe-9d0a-4573c576c545
+GET https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder?id=9462c239-99f9-4f66-89a8-de3b17591051
 
 ###
 POST https://t6ilktug3a.execute-api.us-east-1.amazonaws.com/prod/spfinder
 Content-Type: application/json
 
 {
-  "location": "Vietnam"
+  "location": "Vietnam",
+  "name": "Hanoi"
 }
 
 ###

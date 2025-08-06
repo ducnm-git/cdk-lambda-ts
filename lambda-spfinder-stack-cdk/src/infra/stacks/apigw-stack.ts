@@ -14,6 +14,8 @@ export class apiStack extends Stack {
     const apigwResource = api.root.addResource('spfinder'); 
     apigwResource.addMethod('GET', props.spfinderIntegration);
     apigwResource.addMethod('POST', props.spfinderIntegration);
+    apigwResource.addMethod('PUT', props.spfinderIntegration);
+    apigwResource.addMethod('DELETE', props.spfinderIntegration);
     apigwResource.addMethod('ANY', props.spfinderIntegration);
   }
 }

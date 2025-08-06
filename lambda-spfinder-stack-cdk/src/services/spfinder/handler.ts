@@ -5,6 +5,7 @@ import { getHandler } from "./getHandler";
 import { postHandlerWithDoc } from "./postHandlerWithDoc";
 import { putHandler } from "./putHandler";
 import { deleteHandler } from "./deleteHandler";
+import { missingFieldError } from "../shared/validator";
 
 const ddbClient = new DynamoDBClient({})
 
@@ -20,7 +21,7 @@ async function handler(event: APIGatewayProxyEvent, context: Context): Promise<A
         return getResponse;
       case 'POST':
         msg = 'Process POST method';
-        const postResponse = await postHandlerWithDoc(event, ddbClient);
+        const postResponse = await postHandler(event, ddbClient);
         return postResponse;
       case 'PUT':
         msg = 'Process PUT method';
@@ -37,14 +38,20 @@ async function handler(event: APIGatewayProxyEvent, context: Context): Promise<A
         break;
     }
   } catch (error) {
+    if (error instanceof missingFieldError) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify(error.message)
+      }
+    }
+    
+
     console.error(error);
     return {
       statusCode: 500,
       body: JSON.stringify(error.message)
     }
   }
-
-
 
   const response: APIGatewayProxyResult = {
     statusCode: 200,

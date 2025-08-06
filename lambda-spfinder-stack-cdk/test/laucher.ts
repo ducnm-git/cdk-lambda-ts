@@ -1,3 +1,4 @@
+import { Result } from "aws-cdk-lib/aws-stepfunctions";
 import { handler } from "../src/services/spfinder/handler";
 
 // For direct debug on local machine
@@ -35,9 +36,20 @@ process.env.TABLE_NAME = "spfinderTable-12082fe002b1"
 //   })
 // } as any, {} as any)
 
+// handler({
+//   httpMethod: 'DELETE',
+//   queryStringParameters: {
+//     id: '9c3e5093-f6a6-44dd-938e-af3a5d76b3c7'
+//   }
+// } as any, {} as any)
+
+
+// Validate test
 handler({
-  httpMethod: 'DELETE',
-  queryStringParameters: {
-    id: '9c3e5093-f6a6-44dd-938e-af3a5d76b3c7'
-  }
-} as any, {} as any)
+  httpMethod: 'POST',
+  body: JSON.stringify({
+    location: "Vietnam"
+  })
+} as any, {} as any).then(result => {
+  console.log(result)
+});
