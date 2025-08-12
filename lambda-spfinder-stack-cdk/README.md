@@ -94,3 +94,8 @@ Cloudwatch log group field map:
 
 ## Note
 - Linux: `Ctrl + Shift + I` for reformat file in VSCode
+
+
+
+## AWS Cognito
+To create user, go to AWS console -> cognito. Then user need to change pass to make password valid. To Reset password: `aws cognito-idp admin-set-user-password --user-pool-id [pool-id] --username [username] --password "[pwd]" --permanent`
